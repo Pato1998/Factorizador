@@ -1,0 +1,15 @@
+.container-center
+{
+    font-family: sans-serif;
+    background: lightgreen;
+    border:2px solid #ccc;
+    width: 20%;
+    margin-left: 40%;
+    text-align: center;
+    height: 200px;
+}
+
+h5
+{
+    font-size: 20px;
+}
