@@ -1,6 +1,6 @@
 .container-center
 {
-    font-family: sans-serif;
+    font-family: 'calibri';
     background: lightgreen;
     border:2px solid #ccc;
     width: 20%;
@@ -9,7 +9,24 @@
     height: 200px;
 }
 
-h5
+h5, p
 {
     font-size: 20px;
+}
+
+input
+{
+    width: 25%;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-bottom: 2px solid rgb(15, 9, 9);
+    background: lightgreen;
+    text-align: center;
+}
+
+button
+{
+    font-size: 15px;
+    padding:0;
 }

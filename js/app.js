@@ -1,9 +1,12 @@
 import { factorizar, ordenarFactores } from './factorizacionModule.js';
 
 var btnFactorizar = document.getElementById('btnFactorizar');
+var btnLimpiar = document.getElementById("btnLimpiar");
 var resultado = document.getElementById("resultado");
+var inNumero = document.getElementById('numero');
 
 btnFactorizar.addEventListener('click', factorizacion);
+btnLimpiar.addEventListener('click', limpiar);
 
 function factorizacion()
 {
@@ -11,13 +14,13 @@ function factorizacion()
     resultado.textContent = null;
 
     //Obtengo el numero
-    let numero = document.getElementById('numero').value;
-    numero = numero.trim(); //Quito los espacios en blanco
+    numero = inNumero.value.trim(); //Quito los espacios en blanco
 
     //Valido que sea un numero
-    if(isNaN(numero) || numero.trim() == '' || Number.isInteger(numero)) //Valida que sea numero y entero
+
+    if(isNaN(numero) || !Number.isInteger(Number(numero)) || numero == '')
     {
-        resultado.innerText = "Debe ingresar un numero entero";
+        resultado.innerHTML = 'Debe ingresar un numero entero';
         return;
     }
 
@@ -37,6 +40,23 @@ function factorizacion()
         
         sup.appendChild(content);
         resultado.appendChild(sup);
+    });
+}
+
+function limpiar()
+{
+    let arr = [];
+    
+    arr.push(resultado, inNumero);
+    clearElements(arr);
+}
+
+
+//Reutilizable
+function clearElements(clear = [])
+{
+    clear.map((e) => {
+        e.tagName == 'INPUT' ? e.value = '' : e.innerHTML = '';
     });
 }
 
