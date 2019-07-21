@@ -14,9 +14,7 @@ function factorizacion()
     resultado.textContent = null;
 
     //Obtengo el numero
-    numero = inNumero.value.trim(); //Quito los espacios en blanco
-
-    //Valido que sea un numero
+    numero = inNumero.value.trim(); //Quito los espacios en blanco (input numero)
 
     if(isNaN(numero) || !Number.isInteger(Number(numero)) || numero == '')
     {
@@ -26,11 +24,10 @@ function factorizacion()
 
     //Obtengo los factores del numero
     let factores = factorizar(numero);
-
     //Los ordeno y cuento cuantos hay de cada uno
     factores = ordenarFactores(factores);
 
-    //Los muestro
+    //Renderizado
     factores.map(factor => {
         let numero = document.createTextNode(factor.number);
         resultado.appendChild(numero);
@@ -41,6 +38,13 @@ function factorizacion()
         sup.appendChild(content);
         resultado.appendChild(sup);
     });
+
+    //Si es negativo se agregan parentesis y signo negativo.
+    if(numero < 0)
+    {
+        const contentR = resultado.innerHTML;
+        resultado.innerHTML = '-(' + contentR + ')';
+    }
 }
 
 function limpiar()
@@ -51,8 +55,6 @@ function limpiar()
     clearElements(arr);
 }
 
-
-//Reutilizable
 function clearElements(clear = [])
 {
     clear.map((e) => {
